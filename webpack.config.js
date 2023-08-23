@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
@@ -9,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.[contenthash].js',
-    assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
+    // assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
   },
   devServer: {
     watchFiles: path.join(__dirname, 'src'),

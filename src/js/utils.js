@@ -23,7 +23,34 @@
  * ```
  * */
 export function calcTileType(index, boardSize) {
-  // TODO: ваш код будет тут
+  if (boardSize === 8) {
+    if (index === 0) {
+      return 'top-left';
+    }
+    if (index >= 1 && index <= 6) {
+      return 'top';
+    }
+    if (index === 7) {
+      return 'top-right';
+    }
+    if (index === 56) {
+      return 'bottom-left';
+    }
+    if (index >= 57 && index <= 62) {
+      return 'bottom';
+    }
+    if (index === 63) {
+      return 'bottom-right';
+    }
+    const leftSide = [8, 16, 24, 32, 40, 48];
+    if (leftSide.includes(index)) {
+      return 'left';
+    }
+    const rightSide = [15, 23, 31, 39, 47, 55];
+    if (rightSide.includes(index)) {
+      return 'right';
+    }
+  }
   return 'center';
 }
 
