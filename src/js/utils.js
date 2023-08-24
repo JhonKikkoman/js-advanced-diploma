@@ -23,6 +23,16 @@
  * ```
  * */
 export function calcTileType(index, boardSize) {
+  if ((index % boardSize) === 0) {
+    if (index >= boardSize && index < (boardSize ** 2) - boardSize) {
+      return 'left';
+    }
+  }
+  if (((index % boardSize) - 7) === 0) {
+    if (index > 7 && index <= (boardSize ** 2) - boardSize) {
+      return 'right';
+    }
+  }
   if (boardSize === 8) {
     if (index === 0) {
       return 'top-left';
@@ -41,14 +51,6 @@ export function calcTileType(index, boardSize) {
     }
     if (index === 63) {
       return 'bottom-right';
-    }
-    const leftSide = [8, 16, 24, 32, 40, 48];
-    if (leftSide.includes(index)) {
-      return 'left';
-    }
-    const rightSide = [15, 23, 31, 39, 47, 55];
-    if (rightSide.includes(index)) {
-      return 'right';
     }
   }
   return 'center';
