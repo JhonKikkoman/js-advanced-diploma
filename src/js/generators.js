@@ -13,8 +13,8 @@ import Magician from './characters/magician';
 import Swordsman from './characters/swordsman';
 
 export function* characterGenerator(allowedTypes, maxLevel) {
-  for (const index of allowedTypes) {
-      const instance = index;
+  for (const Index of allowedTypes) {
+      const instance = new Index();
       yield instance;
   }
 }
