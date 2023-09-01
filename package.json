@@ -28,7 +28,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "test": "jest --coverage",
+    "test": "jest --coverage --watch",
     "serve": "webpack serve --open --mode development",
     "lint": "eslint .",
     "prod": "webpack --mode production"

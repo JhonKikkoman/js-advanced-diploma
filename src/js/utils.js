@@ -33,25 +33,23 @@ export function calcTileType(index, boardSize) {
       return 'right';
     }
   }
-  if (boardSize === 8) {
-    if (index === 0) {
-      return 'top-left';
-    }
-    if (index >= 1 && index <= 6) {
-      return 'top';
-    }
-    if (index === 7) {
-      return 'top-right';
-    }
-    if (index === 56) {
-      return 'bottom-left';
-    }
-    if (index >= 57 && index <= 62) {
-      return 'bottom';
-    }
-    if (index === 63) {
-      return 'bottom-right';
-    }
+  if (index === 0) {
+    return 'top-left';
+  }
+  if (index >= 1 && index <= 6) {
+    return 'top';
+  }
+  if (index === 7) {
+    return 'top-right';
+  }
+  if (index === 56) {
+    return 'bottom-left';
+  }
+  if (index >= 57 && index <= 62) {
+    return 'bottom';
+  }
+  if (index === 63) {
+    return 'bottom-right';
   }
   return 'center';
 }

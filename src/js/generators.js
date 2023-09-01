@@ -8,10 +8,22 @@
  * возвращает новый экземпляр класса персонажа
  *
  */
-export function* characterGenerator(allowedTypes, maxLevel) {
-  // TODO: write logic here
-}
+import Bowman from './characters/bowman';
+import Magician from './characters/magician';
+import Swordsman from './characters/swordsman';
 
+export function* characterGenerator(allowedTypes, maxLevel) {
+  for (const index of allowedTypes) {
+      const instance = index;
+      yield instance;
+  }
+}
+const playerTypes = [Bowman, Swordsman, Magician];
+const playerGenerator = characterGenerator(playerTypes, 2);
+const character1 = playerGenerator.next().value;
+console.log(character1);
+const character2 = playerGenerator.next().value;
+console.log(character2);
 /**
  * Формирует массив персонажей на основе characterGenerator
  * @param allowedTypes массив классов
