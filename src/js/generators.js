@@ -17,7 +17,7 @@ import Team from './Team';
 
 export function* characterGenerator(allowedTypes, maxLevel) {
   for (const Index of allowedTypes) {
-    const instance = new Index();
+    const instance = new Index(1);
     if (instance.level <= maxLevel) {
       yield instance;
     }
@@ -38,14 +38,15 @@ export function* characterGenerator(allowedTypes, maxLevel) {
  * @returns экземпляр Team, хранящий экземпляры персонажей. Количество персонажей в команде - characterCount
  * */
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
-  const counter = characterCount;
   const team = new Team();
-  const obj = characterGenerator(allowedTypes, maxLevel);
-  const ch1 = obj.next().value
-  console.log(ch1);
-  team.addAll(obj);
+  const playerGenerator = characterGenerator(allowedTypes, maxLevel);
+  for (let i = 1; i <= characterCount; i += 1) {
+    const character = playerGenerator.next().value;
+    console.log(character);
+    team.addAll(character);
+  }
   return team.members.keys();
 }
 
 const playerTypes = [Bowman, Swordsman, Magician];
-generateTeam(playerTypes, 1, 3);
+console.log(generateTeam(playerTypes, 1, 2));
