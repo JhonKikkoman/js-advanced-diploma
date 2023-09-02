@@ -42,11 +42,11 @@ export function generateTeam(allowedTypes, maxLevel, characterCount) {
   const playerGenerator = characterGenerator(allowedTypes, maxLevel);
   for (let i = 1; i <= characterCount; i += 1) {
     const character = playerGenerator.next().value;
-    console.log(character);
     team.addAll(character);
   }
   return team.members.keys();
 }
 
 const playerTypes = [Bowman, Swordsman, Magician];
+console.log(generateTeam(playerTypes, 1, 3));
 console.log(generateTeam(playerTypes, 1, 2));
