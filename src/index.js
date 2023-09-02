@@ -1,5 +1,5 @@
 import './css/style.css';
 import './js/app';
-import './js/generators'
+import './js/PositionedCharacter'
 // Точка входа webpack
 // Не пишите код в данном файле
