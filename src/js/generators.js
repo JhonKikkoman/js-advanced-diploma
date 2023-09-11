@@ -13,18 +13,18 @@ import Character from './Character';
 import Bowman from './characters/bowman';
 import Magician from './characters/magician';
 import Swordsman from './characters/swordsman';
+import Daemon from './characters/daemon';
 import Team from './Team';
 
 export function* characterGenerator(allowedTypes, maxLevel) {
-  for (const Index of allowedTypes) {
-    const instance = new Index(1);
-    if (instance.level <= maxLevel) {
-      yield instance;
-    }
+  while (true) {
+    const randomIndex = Math.floor(Math.random() * allowedTypes.length);
+    const instance = new allowedTypes[randomIndex](Math.round((Math.random() * (maxLevel - 1) + 1)));
+    yield instance;
   }
 }
-// const playerTypes = [Bowman, Swordsman, Magician];
-// const playerGenerator = characterGenerator(playerTypes, 2);
+// const playerTypes = [Bowman, Swordsman, Magician, Daemon];
+// const playerGenerator = characterGenerator(playerTypes, 3);
 // const character1 = playerGenerator.next().value;
 // console.log(character1);
 // const character2 = playerGenerator.next().value;
@@ -42,11 +42,11 @@ export function generateTeam(allowedTypes, maxLevel, characterCount) {
   const playerGenerator = characterGenerator(allowedTypes, maxLevel);
   for (let i = 1; i <= characterCount; i += 1) {
     const character = playerGenerator.next().value;
-    team.addAll(character);
+    team.add(character);
   }
-  return team.members.keys();
+  return team.toArray();
 }
 
-const playerTypes = [Bowman, Swordsman, Magician];
-console.log(generateTeam(playerTypes, 1, 3));
-console.log(generateTeam(playerTypes, 1, 2));
+// const playerTypes = [Bowman, Swordsman, Magician];
+// console.log(generateTeam(playerTypes, 3, 1));
+// console.log(generateTeam(playerTypes, 4, 4));
